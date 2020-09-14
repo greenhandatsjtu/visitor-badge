@@ -77,6 +77,7 @@ def visitor_svg() -> Response:
         merge_Png.paste(raw[latest_count%10], (x, y))
         latest_count = int(latest_count/10)
         x -= 200
+    merge_Png.save('merge.png')
 
 
     svg = badge(left_text="visitors", right_text=str(latest_count))
@@ -86,8 +87,8 @@ def visitor_svg() -> Response:
     headers = {'Cache-Control': 'no-cache,max-age=0,no-store,s-maxage=0,proxy-revalidate',
                'Expires': expiry_time.strftime("%a, %d %b %Y %H:%M:%S GMT")}
 
-    return Response(response=svg, content_type="image/svg+xml", headers=headers)
-    # return Response(response=merge_Png, content_type="image/png", headers=headers)
+    # return Response(response=svg, content_type="image/svg+xml", headers=headers)
+    return Response(response=open('merge.png').read(), content_type="image/png", headers=headers)
 
 
 @app.route("/index.html")
