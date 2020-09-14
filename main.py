@@ -13,9 +13,9 @@ load_dotenv(find_dotenv())
 
 app = Flask(__name__)
 
-raw=[]
-for i in range(10):
-    raw.append(Image.open('pictures/' + str(i) + '.png'))
+# raw=[]
+# for i in range(10):
+#     raw.append(Image.open('pictures/' + str(i) + '.png'))
     
 def invalid_count_resp(err_msg) -> Response:
     """
@@ -61,20 +61,20 @@ def visitor_svg() -> Response:
     if not latest_count:
         return invalid_count_resp("Count API Failed")
 
-    ll = len(str(latest_count))
+    # ll = len(str(latest_count))
 
-    merge_Png = Image.new('RGB', (200*ll, 200))  # 创建一个新图
-    # 横向拼接（因为是横向裁剪的，文件的顺序须保持一致）。x,y用来控制换行
-    y = 0
-    x = ll*200-200  # w = 480
+    # merge_Png = Image.new('RGB', (200*ll, 200))  # 创建一个新图
+    # # 横向拼接（因为是横向裁剪的，文件的顺序须保持一致）。x,y用来控制换行
+    # y = 0
+    # x = ll*200-200  # w = 480
 
-    for i in range(ll):
-        merge_Png.paste(raw[latest_count%10], (x, y))
-        latest_count = int(latest_count/10)
-        x -= 200
+    # for i in range(ll):
+    #     merge_Png.paste(raw[latest_count%10], (x, y))
+    #     latest_count = int(latest_count/10)
+    #     x -= 200
 
 
-    # svg = badge(left_text="visitors", right_text=str(latest_count))
+    svg = badge(left_text="visitors", right_text=str(latest_count))
 
     expiry_time = datetime.datetime.utcnow() - datetime.timedelta(minutes=10)
 
