@@ -13,9 +13,9 @@ load_dotenv(find_dotenv())
 
 app = Flask(__name__)
 
-# raw=[]
-# for i in range(10):
-#     raw.append(Image.open('pictures/' + str(i) + '.png'))
+raw=[]
+for i in range(10):
+    raw.append(Image.open('pictures/' + str(i) + '.png'))
     
 def invalid_count_resp(err_msg) -> Response:
     """
