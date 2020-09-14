@@ -73,10 +73,10 @@ def visitor_svg() -> Response:
     y = 0
     x = ll*200-200  # w = 480
 
-    # for i in range(ll):
-    #     merge_Png.paste(raw[latest_count%10], (x, y))
-    #     latest_count = int(latest_count/10)
-    #     x -= 200
+    for i in range(ll):
+        merge_Png.paste(raw[latest_count%10], (x, y))
+        latest_count = int(latest_count/10)
+        x -= 200
 
 
     svg = badge(left_text="visitors", right_text=str(latest_count))
