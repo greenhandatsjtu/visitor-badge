@@ -61,14 +61,14 @@ def visitor_svg() -> Response:
     if not latest_count:
         return invalid_count_resp("Count API Failed")
 
-    len = len(str(latest_count))
+    ll = len(str(latest_count))
 
-    merge_Png = Image.new('RGB', (200*len, 200))  # 创建一个新图
+    merge_Png = Image.new('RGB', (200*ll, 200))  # 创建一个新图
     # 横向拼接（因为是横向裁剪的，文件的顺序须保持一致）。x,y用来控制换行
     y = 0
-    x = len*200-200  # w = 480
+    x = ll*200-200  # w = 480
 
-    for i in range(len):
+    for i in range(ll):
         merge_Png.paste(raw[latest_count%10], (x, y))
         latest_count = int(latest_count/10)
         x -= 200
