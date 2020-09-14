@@ -1,4 +1,5 @@
 Flask
+pillow
 pybadges
 gunicorn
 requests
