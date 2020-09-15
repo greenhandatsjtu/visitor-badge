@@ -87,12 +87,7 @@ def visitor_svg() -> Response:
     headers = {'Cache-Control': 'no-cache,max-age=0,no-store,s-maxage=0,proxy-revalidate',
                'Expires': expiry_time.strftime("%a, %d %b %Y %H:%M:%S GMT")}
 
-    # return Response(response=svg, content_type="image/svg+xml", headers=headers)
     return Response(response=open('merge.png','rb'), content_type="image/png", headers=headers)
-    # image_data = open('merge.png')
-    # response = make_response(image_data)
-    # response.headers['Content-Type'] = 'image/png'
-    # return response
 
 
 @app.route("/index.html")
