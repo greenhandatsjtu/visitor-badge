@@ -89,7 +89,7 @@ def visitor_svg() -> Response:
 
     # return Response(response=svg, content_type="image/svg+xml", headers=headers)
     # return Response(response=open('merge.png').read(), content_type="image/png", headers=headers)
-    image_data = open('merge.png').read()
+    image_data = open('merge.png')
     response = make_response(image_data)
     response.headers['Content-Type'] = 'image/png'
     return response
