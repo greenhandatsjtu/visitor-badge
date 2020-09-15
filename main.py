@@ -88,7 +88,7 @@ def visitor_svg() -> Response:
     #            'Expires': expiry_time.strftime("%a, %d %b %Y %H:%M:%S GMT")}
 
     # return Response(response=svg, content_type="image/svg+xml", headers=headers)
-    return Response(response=open('merge.png'), content_type="image/png")
+    return Response(response=open('merge.png','rb'), content_type="image/png")
     # image_data = open('merge.png')
     # response = make_response(image_data)
     # response.headers['Content-Type'] = 'image/png'
