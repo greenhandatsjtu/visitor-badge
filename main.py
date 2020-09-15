@@ -82,17 +82,12 @@ def visitor_svg() -> Response:
 
     # svg = badge(left_text="visitors", right_text=str(latest_count))
 
-    # expiry_time = datetime.datetime.utcnow() - datetime.timedelta(minutes=10)
+    expiry_time = datetime.datetime.utcnow() - datetime.timedelta(minutes=10)
 
-    # headers = {'Cache-Control': 'no-cache,max-age=0,no-store,s-maxage=0,proxy-revalidate',
-    #            'Expires': expiry_time.strftime("%a, %d %b %Y %H:%M:%S GMT")}
+    headers = {'Cache-Control': 'no-cache,max-age=0,no-store,s-maxage=0,proxy-revalidate',
+               'Expires': expiry_time.strftime("%a, %d %b %Y %H:%M:%S GMT")}
 
-    # return Response(response=svg, content_type="image/svg+xml", headers=headers)
-    # return Response(response=open('merge.png').read(), content_type="image/png", headers=headers)
-    image_data = open('merge.png').read()
-    response = make_response(image_data)
-    response.headers['Content-Type'] = 'image/png'
-    return response
+    return Response(response=open('merge.png','rb'), content_type="image/png", headers=headers)
 
 
 @app.route("/index.html")
