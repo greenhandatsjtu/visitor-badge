@@ -84,11 +84,11 @@ def visitor_svg() -> Response:
 
     expiry_time = datetime.datetime.utcnow() - datetime.timedelta(minutes=10)
 
-    headers = {'Cache-Control': 'no-cache,max-age=0,no-store,s-maxage=0,proxy-revalidate',
-               'Expires': expiry_time.strftime("%a, %d %b %Y %H:%M:%S GMT")}
+    # headers = {'Cache-Control': 'no-cache,max-age=0,no-store,s-maxage=0,proxy-revalidate',
+    #            'Expires': expiry_time.strftime("%a, %d %b %Y %H:%M:%S GMT")}
 
     # return Response(response=svg, content_type="image/svg+xml", headers=headers)
-    return Response(response=open('merge.png'), content_type="image/png", headers=headers)
+    return Response(response=open('merge.png'), content_type="image/png")
     # image_data = open('merge.png')
     # response = make_response(image_data)
     # response.headers['Content-Type'] = 'image/png'
